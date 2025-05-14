@@ -1,0 +1,12 @@
+services:
+  - type: web
+    name: smart-healthcare-assistant
+    env: python
+    buildCommand: "pip install -r deployable_requirements.txt"
+    startCommand: "streamlit run app.py --server.port=$PORT --server.address=0.0.0.0 --server.enableXsrfProtection=false"
+    plan: free
+    envVars:
+      - key: GROQ_API_KEY
+        sync: false
+      - key: DATABASE_URL
+        sync: false
